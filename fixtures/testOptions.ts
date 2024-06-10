@@ -8,7 +8,7 @@ export const test = base.extend<TestOptions>({
     const pm = new PageManager(page);
     await use(pm);
   },
-  successfulUserLogIn: async ({ page, pageManager }, use) => {
+  successfulUserLogIn: [async ({ page, pageManager }, use) => {
     await page.goto("/");
     await pageManager.onHomePage().waitForPageToBeLoaded();
     await pageManager.onHomePage().clickOnLogInButtonOnHeader();
@@ -17,10 +17,5 @@ export const test = base.extend<TestOptions>({
     await pageManager.onLogInForm().clickOnLogInButton();
     await pageManager.onHomePage().waitForPageToBeLoaded();
     await use("");
-  },
-
-  cancelAllOrders: async ({ pageManager }, use) => {
-    await pageManager.onHomePage().clearAllOrdersOnPositionsComponent();
-    await use("");
-  },
+  }, {auto: true}],
 });

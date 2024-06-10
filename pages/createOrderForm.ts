@@ -8,7 +8,7 @@ export class CreateOrderForm {
   constructor(page: Page) {
     this.page = page;
     this.placeOrderBtn = page.getByRole("button", { name: "Place Order" });
-    this.okBtn = page.getByText("OK");
+    this.okBtn = page.getByText("OK", { exact: true });
   }
 
   async clickOnPlaceOrderButton() {
